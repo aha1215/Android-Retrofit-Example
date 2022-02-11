@@ -13,6 +13,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ *  Class used by ViewModel to interact with Google Books API
+ */
+
 public class BookRepository {
     // Base url for retrofit to send out network requests to API
     private static final String BOOK_SEARCH_SERVICE_BASE_URL = "https://www.googleapis.com/";
@@ -20,6 +24,9 @@ public class BookRepository {
     private BookSearchService bookSearchService;
     private MutableLiveData<VolumesResponse> volumesResponseLiveData;
 
+    /**
+     *  Constructor to build client for interaction with Google Books API
+     */
     public BookRepository() {
         volumesResponseLiveData = new MutableLiveData<>();
 
@@ -36,6 +43,13 @@ public class BookRepository {
 
     }
 
+    /**
+     * Uses client built by retrofit2 to make an API request.
+     * Handles the API response in the case of success or failure
+     * @param keyword a String
+     * @param author a String
+     * @param apiKey a String
+     */
     public void searchVolumes(String keyword, String author, String apiKey) {
         bookSearchService.searchVolumes(keyword, author, apiKey)
                 .enqueue(new Callback<VolumesResponse>() {

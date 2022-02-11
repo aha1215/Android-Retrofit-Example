@@ -10,6 +10,10 @@ import com.student.library.ApiKeys;
 import com.student.library.models.VolumesResponse;
 import com.student.library.repositories.BookRepository;
 
+/**
+ *  ViewModel used by Views. Used to interact with Google API via BookRepository.
+ */
+
 public class BookSearchViewModel extends AndroidViewModel {
     private BookRepository bookRepository;
     private LiveData<VolumesResponse> volumesResponseLiveData;

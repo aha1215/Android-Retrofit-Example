@@ -17,6 +17,10 @@ import com.student.library.util.Util;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  RecyclerView adapter for displaying search results.
+ */
+
 public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchResultsAdapter.BookSearchResultHolder> {
     private List<Volume> results = new ArrayList<>();
 
@@ -62,6 +66,9 @@ public class BookSearchResultsAdapter extends RecyclerView.Adapter<BookSearchRes
         notifyDataSetChanged();
     }
 
+    /**
+     *  Inner class to set contents of each TextView and ImageView in search results.
+     */
     class BookSearchResultHolder extends RecyclerView.ViewHolder {
         private TextView titleTextView;
         private TextView authorsTextView;

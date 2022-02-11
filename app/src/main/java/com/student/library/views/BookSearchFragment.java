@@ -34,7 +34,11 @@ public class BookSearchFragment extends Fragment {
         adapter = new BookSearchResultsAdapter();
 
         viewModel = ViewModelProviders.of(this).get(BookSearchViewModel.class);
+
+        // Connect fragment with BookSearchViewModel and initialize
         viewModel.init();
+
+        // Update data inside adapter when LiveData is updated (as search completes)
         viewModel.getVolumesResponseLiveData().observe(this, new Observer<VolumesResponse>() {
             @Override
             public void onChanged(VolumesResponse volumesResponse) {
@@ -50,6 +54,7 @@ public class BookSearchFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_booksearch, container, false);
 
+        // RecyclerView setup
         RecyclerView recyclerView = view.findViewById(R.id.fragment_booksearch_searchResultsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
@@ -58,6 +63,8 @@ public class BookSearchFragment extends Fragment {
         authorEditText = view.findViewById(R.id.fragment_booksearch_author);
         searchButton = view.findViewById(R.id.fragment_booksearch_search);
 
+        // Trigger ViewModel method to use repository to trigger API request
+        // Retrofit2 updates response into LiveData
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

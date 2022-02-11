@@ -5,6 +5,11 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Part of the Model to handle API response
+ * For more info visit: https://developers.google.com/books/docs/v1/using#response
+ */
+
 public class VolumeInfo {
     @SerializedName("title")
     @Expose

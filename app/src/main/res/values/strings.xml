@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">library</string>
+    <string name="search_by_title">Search by Title</string>
+    <string name="google_book_search">Google Book Search</string>
 </resources>
